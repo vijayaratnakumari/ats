@@ -36,9 +36,15 @@ def file_shared(payload):
     f.close
     name, extention = os.path.splitext(file['name'])
     print(extention)
-    if extention == ".docx" or ".doc" or ".pdf":
+            if fileExtension.endswith(".docx") or fileExtension.endswith(".pdf") or fileExtension.endswith(".doc"):
+            # if fileExtension.endswith(".docx" or ".doc" or ".pdf"):
+            print("This file is:", files)
+
+    #if extention == ".docx" or ".doc" or ".pdf":
         S3url = os.environ['S3_URL'] + channel_name + '/' + file['name']
-    elif extention == ".json":
+                elif fileExtension.endswith(".json"):
+            print('This file is JSON:', files)
+    #elif extention == ".json":
         S3url = os.environ['S3_JOBS_URL'] + channel_name + '/' + file['name']
     
     print(S3url)
